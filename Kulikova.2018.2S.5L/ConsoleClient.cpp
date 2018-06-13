@@ -13,7 +13,6 @@ int main()
 
 	char source[N];
 	std::cout << " Enter your string : " << std::endl;
-	std::cin >> source;
 	std::cin.getline(source, N, '\n');
 
 	int n = 0;

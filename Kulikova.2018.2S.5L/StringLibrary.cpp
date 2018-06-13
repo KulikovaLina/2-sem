@@ -45,21 +45,26 @@ STRINGLIBRARY_API char ** String::ObtainWords(char * source, int & n)
 
 	while (pword)
 	{
-		pword = strtok("\0", symbols);
-		char first = pword[0];
-		char last = pword[strlen(pword) - 1];
-		
-		if (pword != nullptr && toUppear(first) == toUppear(last))
+		pword = strtok('\0', symbols);
+
+		if (pword)
 		{
-			words[n] = new char[strlen(pword) + 1];
+			char first = pword[0];
+			char last = pword[strlen(pword) - 1];
 
-			if (words[n] == nullptr)
+			if (toUppear(first) == toUppear(last))
 			{
-				throw std::bad_alloc();
-			}
 
-			strcpy(words[n], pword);
-			n++;
+				words[n] = new char[strlen(pword) + 1];
+
+				if (words[n] == nullptr)
+				{
+					throw std::bad_alloc();
+				}
+
+				strcpy(words[n], pword);
+				n++;
+			}
 		}
 	 }
 	
